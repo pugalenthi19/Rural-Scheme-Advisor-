@@ -30,7 +30,7 @@ from database import (
     init_db, verify_login, register_user,
     save_conversation, log_question, save_feedback, get_analytics,
 )
-
+from ingest import create_vectorstore
 load_dotenv()
 
 # Load API keys from Streamlit Secrets (Cloud) if available,
@@ -488,8 +488,13 @@ def _login_page():
 # MAIN APP
 # ──────────────────────────────────────────────
 def _main_app():
+
+    if not os.path.exists("vectorstore") or len(os.listdir("vectorstore")) == 0:
+        with st.spinner("Preparing knowledge base for the first time..."):
+            create_vectorstore()
+
     vectordb = _load_vectordb()
-    llm      = _load_llm()
+    llm = _load_llm()
 
     # ── Sidebar ───────────────────────────────
     with st.sidebar:

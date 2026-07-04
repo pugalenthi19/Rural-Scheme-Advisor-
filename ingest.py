@@ -4,53 +4,48 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_community.vectorstores import Chroma
 
-
 DATA_PATH = "data"
 VECTORSTORE_PATH = "vectorstore"
 
 
-# Load all PDFs
-documents = []
+def create_vectorstore():
 
-for file in os.listdir(DATA_PATH):
-    if file.endswith(".pdf"):
-        pdf_path = os.path.join(DATA_PATH, file)
+    if os.path.exists(VECTORSTORE_PATH) and os.listdir(VECTORSTORE_PATH):
+        print("Vector database already exists.")
+        return
 
-        print(f"Loading {file}...")
+    documents = []
 
-        loader = PyPDFLoader(pdf_path)
-        docs = loader.load()
+    for file in os.listdir(DATA_PATH):
+        if file.endswith(".pdf"):
+            pdf_path = os.path.join(DATA_PATH, file)
 
-        documents.extend(docs)
+            print(f"Loading {file}...")
 
-print(f"\nTotal pages loaded: {len(documents)}")
+            loader = PyPDFLoader(pdf_path)
+            docs = loader.load()
 
+            documents.extend(docs)
 
-# Chunk documents
-text_splitter = RecursiveCharacterTextSplitter(
-    chunk_size=1000,
-    chunk_overlap=200
-)
+    print(f"Total pages loaded: {len(documents)}")
 
-chunks = text_splitter.split_documents(documents)
+    splitter = RecursiveCharacterTextSplitter(
+        chunk_size=1000,
+        chunk_overlap=200
+    )
 
-print(f"Total chunks created: {len(chunks)}")
+    chunks = splitter.split_documents(documents)
 
+    embeddings = HuggingFaceEmbeddings(
+        model_name="sentence-transformers/all-MiniLM-L6-v2"
+    )
 
-# Embedding model
-embeddings = HuggingFaceEmbeddings(
-    model_name="sentence-transformers/all-MiniLM-L6-v2"
-)
+    vectordb = Chroma.from_documents(
+        documents=chunks,
+        embedding=embeddings,
+        persist_directory=VECTORSTORE_PATH
+    )
 
+    vectordb.persist()
 
-# Create Chroma DB
-vectordb = Chroma.from_documents(
-    documents=chunks,
-    embedding=embeddings,
-    persist_directory=VECTORSTORE_PATH
-)
-
-vectordb.persist()
-
-print("\nVector database created successfully!")
-print(f"Stored in: {VECTORSTORE_PATH}")
+    print("Vector database created successfully!")
