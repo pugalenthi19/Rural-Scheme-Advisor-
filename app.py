@@ -33,6 +33,17 @@ from database import (
 
 load_dotenv()
 
+# Load API keys from Streamlit Secrets (Cloud) if available,
+# otherwise continue using .env for local development.
+
+groq_key = os.getenv("GROQ_API_KEY") or st.secrets.get("GROQ_API_KEY")
+google_key = os.getenv("GOOGLE_API_KEY") or st.secrets.get("GOOGLE_API_KEY")
+
+if groq_key:
+    os.environ["GROQ_API_KEY"] = groq_key
+
+if google_key:
+    os.environ["GOOGLE_API_KEY"] = google_key
 # ──────────────────────────────────────────────
 # Optional-package flags
 # ──────────────────────────────────────────────
