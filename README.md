@@ -1,6 +1,8 @@
 # 🌾 Rural Scheme Advisor
 
-An AI-powered assistant that helps users learn about Indian Government Rural and Agricultural Schemes using Retrieval-Augmented Generation (RAG). The application provides accurate, document-based answers from official government scheme PDFs.
+An AI-powered assistant that helps users learn about Indian Government Rural and Agricultural Schemes using **Retrieval-Augmented Generation (RAG)**. The application provides accurate, document-based answers from official government scheme PDFs.
+
+![Home](screenshots/home.png)
 
 ---
 
@@ -12,34 +14,35 @@ An AI-powered assistant that helps users learn about Indian Government Rural and
 
 ## 📌 Project Overview
 
-Rural Scheme Advisor is an intelligent chatbot built using **LangChain**, **ChromaDB**, **Groq LLM**, and **Streamlit**.
+Rural Scheme Advisor is an intelligent AI chatbot built using **LangChain**, **ChromaDB**, **Groq LLM**, and **Streamlit**.
 
-Instead of generating generic responses, the chatbot retrieves relevant information from official government scheme documents and answers user queries accurately using Retrieval-Augmented Generation (RAG).
+The application retrieves relevant information from official government scheme documents and generates accurate responses using Retrieval-Augmented Generation (RAG). It automatically builds the vector database from the bundled PDFs during deployment, so users can start asking questions without uploading any documents.
 
 ---
 
 ## 🌟 Project Highlights
 
 - 🤖 AI-powered chatbot using Retrieval-Augmented Generation (RAG)
-- 📚 Automatically builds a vector database from government scheme PDFs
+- 📚 Automatic vector database creation from government scheme PDFs
 - 🔍 Semantic search using ChromaDB and Hugging Face embeddings
 - ☁️ Deployed on Streamlit Community Cloud
 - 🔐 Secure API key management using Streamlit Secrets
+- 📄 No manual PDF upload required after deployment
 
 ---
 
 ## ✨ Features
 
-- AI-powered chatbot using Groq LLM
-- Retrieval-Augmented Generation (RAG)
-- Automatic PDF ingestion
-- Semantic search using ChromaDB
-- Hugging Face sentence embeddings
-- Scheme comparison
-- PDF summarization
-- SQLite database for analytics
-- Secure API key management using Streamlit Secrets
-- Deployed on Streamlit Community Cloud
+- 🤖 AI-powered chatbot using Groq LLM
+- 📚 Retrieval-Augmented Generation (RAG)
+- 📄 Automatic PDF ingestion
+- 🔍 Semantic search using ChromaDB
+- 🧠 Hugging Face sentence embeddings
+- 📊 Scheme comparison
+- 📝 PDF summarization
+- 💾 SQLite database for analytics
+- 🔐 Secure API key management
+- ☁️ Cloud deployment using Streamlit Community Cloud
 
 ---
 
@@ -78,8 +81,14 @@ Rural-Scheme-Advisor/
 │   ├── enam.pdf
 │   └── pmkmy.pdf
 │
-├── vectorstore/
-└── screenshots/
+├── screenshots/
+│   ├── home.png
+│   ├── chatbot.png
+│   ├── comparison.png
+│   ├── summarisation.png
+│   └── analytics.png
+│
+└── vectorstore/
 ```
 
 ---
@@ -117,21 +126,33 @@ streamlit run app.py
 
 ## 📷 Screenshots
 
-### Home Page
+### 🏠 Home Page
 
-_Add a screenshot here_
+![Home](screenshots/home.png)
 
-### Chat Interface
+---
 
-_Add a screenshot here_
+### 💬 Chat Interface
 
-### Scheme Comparison
+![Chat](screenshots/chatbot.png)
 
-_Add a screenshot here_
+---
 
-### PDF Summarization
+### 📊 Scheme Comparison
 
-_Add a screenshot here_
+![Comparison](screenshots/comparison.png)
+
+---
+
+### 📄 PDF Summarization
+
+![Summary](screenshots/summarisation.png)
+
+---
+
+### 📈 Analytics Dashboard
+
+![Analytics](screenshots/analytics.png)
 
 ---
 
@@ -141,33 +162,34 @@ _Add a screenshot here_
 Government Scheme PDFs
           │
           ▼
-     PDF Loader
+      PDF Loader
           │
           ▼
      Text Chunking
           │
           ▼
-Hugging Face Embeddings
+ Hugging Face Embeddings
           │
           ▼
-   Chroma Vector Database
+ Chroma Vector Database
           │
           ▼
-      Retriever
+       Retriever
           │
           ▼
-      Groq LLM
+       Groq LLM
           │
           ▼
-   AI Generated Response
+ AI Generated Response
 ```
 
 ---
 
 ## 🔒 Security
 
-- API keys are stored securely using Streamlit Secrets.
+- API keys are securely stored using Streamlit Secrets.
 - Sensitive files such as `.env` are excluded using `.gitignore`.
+- Vector database is automatically generated during deployment from the bundled PDFs.
 
 ---
 
@@ -176,8 +198,8 @@ Hugging Face Embeddings
 - Support additional government schemes
 - OCR support for scanned PDF documents
 - Multilingual interface
-- Mobile-friendly interface
-- Admin dashboard for managing scheme documents
+- Mobile-friendly UI
+- Admin dashboard for document management
 
 ---
 
