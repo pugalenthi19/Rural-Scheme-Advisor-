@@ -16,7 +16,7 @@ An AI-powered assistant that helps users learn about Indian Government Rural and
 
 Rural Scheme Advisor is an intelligent AI chatbot built using **LangChain**, **ChromaDB**, **Groq LLM**, and **Streamlit**.
 
-The application retrieves relevant information from official government scheme documents and generates accurate responses using Retrieval-Augmented Generation (RAG). It automatically builds the vector database from the bundled PDFs during deployment, so users can start asking questions without uploading any documents.
+The application retrieves relevant information from official government scheme documents and generates accurate responses using Retrieval-Augmented Generation (RAG). It automatically builds the vector database from the bundled PDFs during deployment, allowing users to ask questions instantly without uploading any documents.
 
 ---
 
@@ -205,7 +205,7 @@ Government Scheme PDFs
 
 ## 👨‍💻 Author
 
-**Taranjayavarman K S**
+**Pugalenthi E**
 
 B.Tech Electronics & Communication Engineering
 
@@ -217,4 +217,4 @@ GitHub: https://github.com/pugalenthi19
 
 ## ⭐ Support
 
-If you found this project useful, please consider giving it a ⭐ on GitHub.
+If you found this project useful, please consider giving it a ⭐ on GitHub!
